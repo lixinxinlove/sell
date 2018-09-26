@@ -1,19 +1,20 @@
 package com.lixinxinlove.service.impl;
 
-import com.imooc.converter.OrderMaster2OrderDTOConverter;
-import com.imooc.dataobject.OrderDetail;
-import com.imooc.dataobject.OrderMaster;
-import com.imooc.dataobject.ProductInfo;
-import com.imooc.dto.CartDTO;
-import com.imooc.dto.OrderDTO;
-import com.imooc.enums.OrderStatusEnum;
-import com.imooc.enums.PayStatusEnum;
-import com.imooc.enums.ResultEnum;
-import com.imooc.exception.SellException;
-import com.imooc.repository.OrderDetailRepository;
-import com.imooc.repository.OrderMasterRepository;
-import com.imooc.service.*;
-import com.imooc.utils.KeyUtil;
+
+import com.lixinxinlove.converter.OrderMaster2OrderDTOConverter;
+import com.lixinxinlove.dataobject.OrderDetail;
+import com.lixinxinlove.dataobject.OrderMaster;
+import com.lixinxinlove.dataobject.ProductInfo;
+import com.lixinxinlove.dto.CartDTO;
+import com.lixinxinlove.dto.OrderDTO;
+import com.lixinxinlove.enums.OrderStatusEnum;
+import com.lixinxinlove.enums.PayStatusEnum;
+import com.lixinxinlove.enums.ResultEnum;
+import com.lixinxinlove.exception.SellException;
+import com.lixinxinlove.repository.OrderDetailRepository;
+import com.lixinxinlove.repository.OrderMasterRepository;
+import com.lixinxinlove.service.*;
+import com.lixinxinlove.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,7 +112,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO findOne(String orderId) {
 
-        OrderMaster orderMaster = orderMasterRepository.findOne(orderId);
+        OrderMaster orderMaster = orderMasterRepository.getOne(orderId);
         if (orderMaster == null) {
             throw new SellException(ResultEnum.ORDER_NOT_EXIST);
         }

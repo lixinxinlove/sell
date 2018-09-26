@@ -1,6 +1,7 @@
 package com.lixinxinlove.service;
 
-import com.imooc.dto.OrderDTO;
+
+import com.lixinxinlove.dto.OrderDTO;
 
 /**
  * 推送消息
