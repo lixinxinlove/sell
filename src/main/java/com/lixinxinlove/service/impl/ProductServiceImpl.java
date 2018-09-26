@@ -16,10 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class ProductServiceImlp implements ProductService {
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductInfoRepository repository;
+
+    @Override
+    public ProductInfo findOne(String productId) {
+        return repository.getOne(productId);
+    }
 
     @Override
     public List<ProductInfo> findUpAll() {
@@ -40,7 +45,7 @@ public class ProductServiceImlp implements ProductService {
     @Transactional
     public void increaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO: cartDTOList) {
-            ProductInfo productInfo = repository.findOne(cartDTO.getProductId());
+            ProductInfo productInfo = repository.getOne(cartDTO.getProductId());
             if (productInfo == null) {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
@@ -56,7 +61,7 @@ public class ProductServiceImlp implements ProductService {
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO: cartDTOList) {
-            ProductInfo productInfo = repository.findOne(cartDTO.getProductId());
+            ProductInfo productInfo = repository.getOne(cartDTO.getProductId());
             if (productInfo == null) {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
