@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
-/**
- * 订单
- */
+
 @Entity
 @Data
 public class OrderDetail {
