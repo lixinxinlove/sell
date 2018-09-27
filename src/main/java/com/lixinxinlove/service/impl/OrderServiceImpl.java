@@ -31,8 +31,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by 廖师兄
- * 2017-06-11 18:43
+ * 订单
  */
 @Service
 @Slf4j
@@ -98,9 +97,11 @@ public class OrderServiceImpl implements OrderService {
         orderMasterRepository.save(orderMaster);
 
         //4. 扣库存
-        List<CartDTO> cartDTOList = orderDTO.getOrderDetailList().stream().map(e ->
-                new CartDTO(e.getProductId(), e.getProductQuantity())
-        ).collect(Collectors.toList());
+        List<CartDTO> cartDTOList = orderDTO
+                .getOrderDetailList()
+                .stream().map(e -> new CartDTO(e.getProductId(), e.getProductQuantity()))
+                .collect(Collectors.toList());
+
         productService.decreaseStock(cartDTOList);
 
         //发送websocket消息
