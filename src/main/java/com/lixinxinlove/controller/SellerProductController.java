@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -139,6 +140,8 @@ public class SellerProductController {
                 form.setProductId(KeyUtil.genUniqueKey());
             }
             BeanUtils.copyProperties(form, productInfo);
+            productInfo.setUpdateTime(new Date());
+            productInfo.setCreateTime(new Date());
             productService.save(productInfo);
         } catch (SellException e) {
             map.put("msg", e.getMessage());
