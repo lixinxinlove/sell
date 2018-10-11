@@ -41,6 +41,12 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
         <!-- Mysql依赖 -->
         <dependency>
             <groupId>mysql</groupId>
@@ -94,6 +100,9 @@
     </dependencies>
 
     <build>
+
+        <finalName>sell</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
