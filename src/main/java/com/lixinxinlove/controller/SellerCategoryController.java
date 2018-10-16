@@ -48,8 +48,7 @@ public class SellerCategoryController {
      * @return
      */
     @GetMapping("/index")
-    public ModelAndView index(@RequestParam(value = "categoryId", required = false) Integer categoryId,
-                              Map<String, Object> map) {
+    public ModelAndView index(@RequestParam(value = "categoryId", required = false) Integer categoryId, Map<String, Object> map) {
         if (categoryId != null) {
             ProductCategory productCategory = categoryService.findOne(categoryId);
             map.put("category", productCategory);
@@ -66,9 +65,7 @@ public class SellerCategoryController {
      * @return
      */
     @PostMapping("/save")
-    public ModelAndView save(@Valid CategoryForm form,
-                             BindingResult bindingResult,
-                             Map<String, Object> map) {
+    public ModelAndView save(@Valid CategoryForm form, BindingResult bindingResult, Map<String, Object> map) {
         if (bindingResult.hasErrors()) {
             map.put("msg", bindingResult.getFieldError().getDefaultMessage());
             map.put("url", "/sell/seller/category/index");
